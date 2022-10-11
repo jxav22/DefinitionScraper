@@ -16,6 +16,7 @@ with path.open() as csv_file:
 # Scrape definitions
 parser = WiktionaryParser()
 
+
 def get_definition(word):
     parsed_word = parser.fetch(word)
     definitions = parsed_word[0].get('definitions')
@@ -23,6 +24,7 @@ def get_definition(word):
         print(f'=== DID NOT RETURN A VALUE ===')
     else:
         return definitions[0].get('text')[1]
+
 
 for i in range(10):
     definition = get_definition(words[i])
