@@ -1,4 +1,5 @@
 import csv
+import json
 from pathlib import Path
 from wiktionaryparser import WiktionaryParser
 
@@ -35,8 +36,10 @@ def preprocess_word(word):
         return word
 
 
-for i in range(10):
+for i in range(1):
     word = words[i]
+    print(word)
+
     definition = get_definition(preprocess_word(word))
     if not definition:
         print(f'{word} DID NOT RETURN A VALUE')
@@ -45,3 +48,13 @@ for i in range(10):
 
 print(definitions)
 # Store definitions in a JSON object
+
+# Serializing json
+json_object = json.dumps(definitions, indent=4)
+
+# Writing to sample.json
+file_location = '../resources/definitions.json'
+path = Path(__file__).parent / file_location
+
+with path.open('w') as outfile:
+    outfile.write(json_object)
