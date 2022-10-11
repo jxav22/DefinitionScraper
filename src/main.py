@@ -14,10 +14,15 @@ with path.open() as csv_file:
     for row in csv_reader:
         words.append(row[0])
 
-# Scrape definitions
-definitions = {}
-parser = WiktionaryParser()
+# Load existing definitions
+file_location = '../resources/definitions.json'
+path = Path(__file__).parent / file_location
 
+with path.open() as infile:
+    definitions = json.load(infile)
+
+# Scrape definitions
+parser = WiktionaryParser()
 
 def get_definition(word):
     parsed_word = parser.fetch(word)
