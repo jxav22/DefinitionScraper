@@ -14,27 +14,34 @@ with path.open() as csv_file:
         words.append(row[0])
 
 # Scrape definitions
+definitions = {}
 parser = WiktionaryParser()
 
 
 def get_definition(word):
     parsed_word = parser.fetch(word)
-    definitions = parsed_word[0].get('definitions')
-    if not definitions:
+    word_definitions = parsed_word[0].get('definitions')
+    if not word_definitions:
         return None
     else:
-        return definitions[0].get('text')[1]
+        return word_definitions[0].get('text')[1]
+
 
 def preprocess_word(word):
     if word.startswith('The '):
         word = word[4:]
         return word
+    else:
+        return word
 
-# for i in range(10):
-#     definition = get_definition(words[i])
-#     if not definition:
-#         print(f'{words[i]} DID NOT RETURN A VALUE')
-#     else:
-#         print(f'{words[i]}: {definition}')
 
+for i in range(10):
+    word = words[i]
+    definition = get_definition(preprocess_word(word))
+    if not definition:
+        print(f'{word} DID NOT RETURN A VALUE')
+    else:
+        definitions[word] = definition
+
+print(definitions)
 # Store definitions in a JSON object
