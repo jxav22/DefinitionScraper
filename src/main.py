@@ -1,5 +1,6 @@
 import csv
 from pathlib import Path
+from wiktionaryparser import WiktionaryParser
 
 # Load words from the csv file
 file_location = '../resources/category_difficulty.csv'
@@ -13,5 +14,18 @@ with path.open() as csv_file:
         words.append(row[0])
 
 # Scrape definitions
+parser = WiktionaryParser()
+
+def get_definition(word):
+    parsed_word = parser.fetch(word)
+    definitions = parsed_word[0].get('definitions')
+    if not definitions:
+        print(f'=== DID NOT RETURN A VALUE ===')
+    else:
+        return definitions[0].get('text')[1]
+
+for i in range(10):
+    definition = get_definition(words[i])
+    print(f'{words[i]}: {definition}')
 
 # Store definitions in a JSON object
