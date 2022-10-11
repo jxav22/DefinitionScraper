@@ -25,12 +25,16 @@ def get_definition(word):
     else:
         return definitions[0].get('text')[1]
 
+def preprocess_word(word):
+    if word.startswith('The '):
+        word = word[4:]
+        return word
 
-for i in range(10):
-    definition = get_definition(words[i])
-    if not definition:
-        print(f'{words[i]} DID NOT RETURN A VALUE')
-    else:
-        print(f'{words[i]}: {definition}')
+# for i in range(10):
+#     definition = get_definition(words[i])
+#     if not definition:
+#         print(f'{words[i]} DID NOT RETURN A VALUE')
+#     else:
+#         print(f'{words[i]}: {definition}')
 
 # Store definitions in a JSON object
