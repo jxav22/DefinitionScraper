@@ -1,5 +1,6 @@
 import csv
 import json
+import re
 from pathlib import Path
 from wiktionaryparser import WiktionaryParser
 
@@ -39,6 +40,11 @@ def preprocess_word(word):
         return word
     else:
         return word
+
+
+def remove_first_brackets(text):
+    return re.sub(r'^\(.+\)\s', '', text)
+
 
 
 for i in range(1):
