@@ -21,13 +21,16 @@ def get_definition(word):
     parsed_word = parser.fetch(word)
     definitions = parsed_word[0].get('definitions')
     if not definitions:
-        print(f'=== DID NOT RETURN A VALUE ===')
+        return None
     else:
         return definitions[0].get('text')[1]
 
 
 for i in range(10):
     definition = get_definition(words[i])
-    print(f'{words[i]}: {definition}')
+    if not definition:
+        print(f'{words[i]} DID NOT RETURN A VALUE')
+    else:
+        print(f'{words[i]}: {definition}')
 
 # Store definitions in a JSON object
