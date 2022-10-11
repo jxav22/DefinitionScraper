@@ -9,7 +9,12 @@ with path.open() as infile:
     definitions = json.load(infile)
 
 # Update definitions manually here
-
+definitions['animal migration'] = ''
+definitions['paint can'] = ''
+definitions['picture frame'] = ''
+definitions['power outlet'] = ''
+definitions['see saw'] = ''
+definitions['swing set'] = ''
 
 # Store definitions in a JSON object
 
