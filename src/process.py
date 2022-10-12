@@ -36,8 +36,12 @@ def remove_plurals(text):
         return text
 
 
+def capitalize(text):
+    return text.capitalize
+
+
 for key, value in definitions.items():
-    definitions[key] = remove_plurals(value)
+    definitions[key] = capitalize(value)
 
 # Store definitions in a JSON object
 
