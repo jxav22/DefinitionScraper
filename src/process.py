@@ -32,7 +32,7 @@ def remove_plurals(text):
     if not match:
         return text
     else:
-        text = get_definition(match.group(0))
+        text = get_definition(match.group(1))
         return text
 
 
