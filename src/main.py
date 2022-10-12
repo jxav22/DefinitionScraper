@@ -25,6 +25,7 @@ with path.open() as infile:
 # Scrape definitions
 parser = WiktionaryParser()
 
+
 def get_definition(word):
     parsed_word = parser.fetch(word)
     word_definitions = parsed_word[0].get('definitions')
@@ -40,11 +41,6 @@ def preprocess_word(word):
         return word
     else:
         return word
-
-
-def remove_first_brackets(text):
-    return re.sub(r'^\(.+\)\s', '', text)
-
 
 
 for i in range(1):
