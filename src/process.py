@@ -37,7 +37,7 @@ def remove_plurals(text):
 
 
 def capitalize(text):
-    return text.capitalize
+    return text.capitalize()
 
 
 for key, value in definitions.items():
